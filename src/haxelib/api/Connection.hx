@@ -278,7 +278,7 @@ class Connection {
 
 		final h = createHttpRequest(fileUrl);
 
-		final currentSize = out.tell();
+		final currentSize:Int = #if (haxe_ver >= 5) out.tell().toInt() #else out.tell() #end;
 		if (currentSize > 0)
 			h.addHeader("range", 'bytes=$currentSize-');
 
